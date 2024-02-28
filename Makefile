@@ -26,8 +26,8 @@ logs:
 clean: down
 
 fclean: clean prune
-	sudo rm -rf /home/hefernan/Bureau/Volumes/mariabd_data/*
-	sudo rm -rf /home/hefernan/Bureau/Volumes/wordpress_files/*
+	sudo rm -rf /home/hefernan/data/Volumes/mariadb_data/*
+	sudo rm -rf /home/hefernan/data/Volumes/wordpress_files/*
 
 re: fclean all
 

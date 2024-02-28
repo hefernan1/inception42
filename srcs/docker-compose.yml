@@ -21,7 +21,7 @@ services:
       context: requirements/wordpress
       dockerfile: Dockerfile
     volumes:
-      - wordpress_files:/var/www/html/wordpress
+      - "wordpress_files:/var/www/html/wordpress"
     depends_on:  # WordPress démarrera uniquement après MariaDB (config de BD apres que celle ci soit creee)
       - mariadb
     env_file: .env
@@ -35,7 +35,7 @@ services:
       context: requirements/nginx
       dockerfile: Dockerfile
     volumes:
-      - wordpress_files:/var/www/html/wordpress
+      - /home/hefernan/data/Volumes/wordpress_files:/var/www/html/wordpress
     depends_on:        			 # ne pas démarrer NGINX tant que WordPress n'a pas démarré.
       - wordpress
     env_file: .env
@@ -49,13 +49,13 @@ volumes:
     driver_opts: # options de driver
       type: 'none' # le volume peut etre modifie a l'exterieur de docker
       o: 'bind'		# volume Bind Mounts = lie a un chemin d'acces sur l'hote
-      device: '/home/hefernan/Bureau/Volumes/mariabd_data'	# ou stocker le dossier en local  
+      device: '/home/hefernan/data/Volumes/mariadb_data'	# ou stocker le dossier en local  
   wordpress_files:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/hefernan/Bureau/Volumes/wordpress_files'
+      device: '/home/hefernan/data/Volumes/wordpress_files'
 
 networks: # faire partie du meme reseau permet la communication entre les conteneurs
   inception:
