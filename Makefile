@@ -31,7 +31,15 @@ fclean: clean prune
 
 re: fclean all
 
-in:
-	sudo docker exec -it $(filter-out $@,$(MAKECMDGOALS)) bash
+.PHONY: volume stop clean prune re
 
-.PHONY: volume stop clean prune re in
+
+#docker exec -it mariadb mysql -u root -p
+
+#SHOW DATABASES;
+
+#USE *le nom de votre database*;
+
+#SHOW TABLES;
+
+#SELECT * FROM wp_users;
